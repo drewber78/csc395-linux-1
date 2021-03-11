@@ -40,3 +40,32 @@ channels (Moodle, email, etc.) for assistance. It also may be useful to record a
 issues encountered as Issues on Github, so that we can practice some of our source
 control and collaborative skills, as well as making information available to other
 students in case they come across the same troubles.
+
+### Lab Exercise Troubleshooting Guide
+
+If you run into trouble on your labs, this is probably the list I would help you
+work through initially to solve our way out of it:
+
+- Are you in the right command line on the right machine?
+  - If you're provisioning, are you on your local?
+    - If your local is Windows, are you in WSL?
+  - If you're configuring, are you on your controller?
+  - If you're checking some files/configs/etc. are you on the right host?
+- Do you have the latest version of your sources?
+  - If you're working (with yourself or others) across multiple machines, git repositories
+    can quickly get out of sync without a regular pull from the server
+  - Realign yourself with a `pull`, `rebase`, or `reset` to the correct point
+    - Ask a teammate or instructor for help if you're concerned about losing work
+      due to git confusion! It happens to everyone, somewhere along the way
+- Are you missing resources?
+  - If you've used a third-party role or collection in your playbook, be sure that
+    it's present and accessible on your current machine
+- Is it a syntax error?
+  - If your YAML file has syntax errors, that's an immediate blocker. These errors
+    typically identify themselves pretty readily, either in your editor or when you
+    attempt to run the playbook
+  - Follow any remediation steps that those provide
+- Is it a runtime error?
+  - The root of errors during a step in your playbook may not be quite as obvious,
+    but using `ansible-playbook -vvv` for verbose output can give us a much better
+    idea of what's going wrong
