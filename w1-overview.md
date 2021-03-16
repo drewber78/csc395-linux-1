@@ -47,6 +47,13 @@ For a more complete overview related to a variety of topics, [this page](https:/
 offers a wealth of information. For more in-depth information on a specific command,
 use the `man` pages or other documentation provided by the author/origin.
 
+## VS Code
+
+[Visual Studio Code](https://code.visualstudio.com/) is a primarily open source
+text editor by Microsoft that offers extensibility and configuration for the type
+of work in this course. I recommend it for managing your playbooks and interacting
+with Git and the CLI in these contexts.
+
 ## Git
 
 Version control offers an easy way to track changes to a given set of files or
