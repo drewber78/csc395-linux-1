@@ -101,7 +101,7 @@ steps should be followed on this machine:
 4. Install the [Ansible Azure Collection](https://galaxy.ansible.com/azure/azcollection)
    1. Install the Azure dependencies as listed in the `README`
 5. Configure an admin username and password for the VMs to be provisioned
-   1. Add a file to the `azure-lab-provisioning\inventory\host_vars\az-workstation\`
+   1. In the exercises repository, add a file to the `inventory\host_vars\az-workstation\`
       directory named `vault.yml`
    2. Begin the file with `---` and follow this with two variable declarations:
       1. `vault_admin_un: {vm admin username here}`
