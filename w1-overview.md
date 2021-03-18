@@ -94,6 +94,7 @@ steps should be followed on this machine:
 1. Install pre-requisites
    1. `git`
    2. `ansible`
+   3. `python3-pip`
 2. Install the `azure-cli` [package](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux)
    1. You'll need to login with the CLI before using it
 3. Fork the [exercises repository](https://github.com/draevin/csc395-linux-lab-exercises)
