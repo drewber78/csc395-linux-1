@@ -26,7 +26,7 @@ that you can be prepared for the rest of the course.
 Essentially all of our interaction with Linux systems in this course will be through
 some form of command line interface (CLI) whether that is directly or via Ansible
 on another machine. Because of this, familiarity with and comfort using basic commands
-and CLI utilities is essential to your success. There are a varietly of resources
+and CLI utilities is essential to your success. There are a variety of resources
 related to learning these commands (some will be listed below) but we're going
 to establish a baseline with some of the most frequently used:
 
