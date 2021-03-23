@@ -121,6 +121,7 @@ is typically the easiest method to set up a local Linux environment.
 2. Use `apt-get install` to install pre-requisites (Hint: always `apt-get update`!)
    1. `git`
    2. `ansible`
+   3. `python3-pip`
 3. Install the `azure-cli` [package](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux)
    1. You'll need to login with the CLI before using it (`az login`)
 4. Fork the [exercises repository](https://github.com/draevin/csc395-linux-lab-exercises)
@@ -130,7 +131,8 @@ is typically the easiest method to set up a local Linux environment.
 5. `git clone` your fork to a directory on your local machine
 6. Install the [Ansible Azure Collection](https://galaxy.ansible.com/azure/azcollection)
    using `ansible-galaxy` as described in the docs
-   1. Install the Azure dependencies using `pip` as listed in the `README`
+   1. Install the Azure dependencies using `pip` as listed in the `README` or `pip3`
+      if `pip` is not available
 7. In VS Code, configure an admin username and password for the VMs to be provisioned
    1. In the exercises repository, add a file to the `inventory/host_vars/az-workstation/`
       directory named `vault.yml`
