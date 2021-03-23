@@ -41,20 +41,33 @@ to establish a baseline with some of the most frequently used:
 - `cp` - command to copy a file or directory from one named location to another
 - `mv` - command to move a file or directory from one named location to another
 - `grep` - command to search/filter text based on regular expressions
-- `man` - command to get the installed documentation for a command
+- `man` - command to get the installed documentation for a named command
 
 For a more complete overview related to a variety of topics, [this page](https://gto76.github.io/linux-cheatsheet/)
 offers a wealth of information. For more in-depth information on a specific command,
 use the `man` pages or other documentation provided by the author/origin.
 
-## VS Code
+## Tools
+
+### VS Code
 
 [Visual Studio Code](https://code.visualstudio.com/) is a primarily open source
 text editor by Microsoft that offers extensibility and configuration for the type
 of work in this course. I recommend it for managing your playbooks and interacting
 with Git and the CLI in these contexts.
 
-## Git
+### VS Code - Extensions
+
+Extensions can be installed from the Extensions menu in the sidebar menu
+(shortcut `Ctrl+Shift+X`) by searching for the desired extension. The full name
+in parentheses is unique to the intended extension for ease of searching.
+
+- GitLens (`eamodio.gitlens`) - Additional git support directly in your editor
+- Markdown All-in-One (`yzhang.markdown-all-in-one`) - Better Markdown support for
+  class materials/docs
+- YAML Language (`redhat.vscode-yaml`) - Language server for YAML (for Ansible playbooks)
+
+### Git
 
 Version control offers an easy way to track changes to a given set of files or
 documents over time, from one or multiple authors, on one or multiple streams of
@@ -69,55 +82,83 @@ For this course:
 
 1. Install [Git](https://git-scm.com/)
 2. Configure your local `git` instance with identity and personal preferences
-3. Create an account on GitHub, if you do not already have one
+   1. `git config --global user.name 'Your Name'`
+   2. `git config --global user.email 'YourGithubEmail@example.com'`
+3. Create an account on [GitHub](https://github.com), if you have not already
 4. Clone this repository to have a current copy of your course materials
-5. Create a repository for yourself to store your lab exercises
-   - The exercises will be cumulative, and will treat your deployed lab resources
-     as long-lived elements of a developing system. Using Ansible and git for this
-     will allow you to add each exercise to your existing files and tag the point
-     in their history that represents each assignment.
+   1. Whenever you use your local copy, be sure to `pull` the latest changes to
+      avoid working from old materials
 
-### Git - Recommended Reading
+#### Git - Recommended Reading
 
 1. The official [Getting Started](https://www.git-scm.com/book/en/v2/Getting-Started-About-Version-Control#ch01-getting-started)
 2. This much more concise [Git Guide](https://rogerdudler.github.io/git-guide/)
 
 ## Lab Setup - Part 1
 
-In order to practice Linux skills, you'll need a Linux environment. To get started,
-you will need any Linux machine (a local VM or WSL is likely easiest) on which to
-install Ansible. We will discuss Ansible in more depth as the course continues.
-In just a moment, we'll be using it to configure a more suitable test environment
-for continued use, but for now anything to which you have access will do. The following
-steps should be followed on this machine:
+### Local Instance Setup
 
-1. Install pre-requisites
+For users on an updated version of Windows 10, Windows Subsystem for Linux (WSL)
+is typically the easiest method to set up a local Linux environment.
+
+1. Follow the provided [Manual Installation Steps](https://docs.microsoft.com/en-us/windows/wsl/install-win10#manual-installation-steps)
+   through Step 5
+   1. You will need to follow all instructions, including reboots, to successfully
+      configure WSL
+2. Instead of using the Windows Store, use the direct installation packages [here](https://aka.ms/wslubuntu2004)
+   to download Ubuntu 20.04
+3. Launch the installed package to complete the installation
+   1. When prompted, set a username and password for your Ubuntu user
+   2. You may need to enable BIOS settings if you encounter errors `0x80070003` or
+      `0x80070003` upon installation:
+      > Please make sure that virtualization is enabled inside of your computer's
+      > BIOS. The instructions on how to do this will vary from computer to computer,
+      > and will most likely be under CPU related options.
+
+### Azure Lab Provisioning
+
+1. From PowerShell, launch your Ubuntu CLI using the `wsl` command
+2. Use `apt-get install` to install pre-requisites (Hint: always `apt-get update`!)
    1. `git`
    2. `ansible`
-   3. `python3-pip`
-2. Install the `azure-cli` [package](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux)
-   1. You'll need to login with the CLI before using it
-3. Fork the [exercises repository](https://github.com/draevin/csc395-linux-lab-exercises)
-   on Github and clone your fork to your local Linux machine with `git`
-4. Install the [Ansible Azure Collection](https://galaxy.ansible.com/azure/azcollection)
-   1. Install the Azure dependencies as listed in the `README`
-5. Configure an admin username and password for the VMs to be provisioned
+3. Install the `azure-cli` [package](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux)
+   1. You'll need to login with the CLI before using it (`az login`)
+4. Fork the [exercises repository](https://github.com/draevin/csc395-linux-lab-exercises)
+   on Github
+   1. If you're working in a team, you will only need one fork, but be sure to
+      add your team members as collaborators
+5. `git clone` your fork to a directory on your local machine
+6. Install the [Ansible Azure Collection](https://galaxy.ansible.com/azure/azcollection)
+   using `ansible-galaxy` as described in the docs
+   1. Install the Azure dependencies using `pip` as listed in the `README`
+7. In VS Code, configure an admin username and password for the VMs to be provisioned
    1. In the exercises repository, add a file to the `inventory/host_vars/az-workstation/`
       directory named `vault.yml`
    2. Begin the file with `---` and follow this with two variable declarations:
       1. `vault_admin_un: {vm admin username here}`
       2. `vault_admin_pw: {vm admin password here}`
    3. Encrypt this file with `ansible-vault` using a password you will remember
-6. Use `ansible-playbook` to run `provisioning.yml` which should create your
+      1. `ansible-vault encrypt inventory/host_vars/az-workstation/vault.yml`
+      2. Ensure that you and your team remember this password
+8. In WSL, use `ansible-playbook` to run `provisioning.yml` which should create your
    Azure lab VMs
-   1. You will need to specify the `inventory` directory and vault password here
+   1. You will need to specify the `inventory` and vault password here using the
+      `-i inventory/inventory.yml` param and `--ask-vault-pass` switch
 
 Your lab should now be live in Azure with four Ubuntu VMs on which to complete the
 rest of the exercises! Feel free to manually stop these or setup Auto Shutdown to
 reduce cost/credit-drain when they are not in use. The rest of our Ansible exercises
 will be completed from the controller VM (publicly accessible) and will configure
 the host VMs (only accessible via the controller through the Azure VNet) to handle
-a variety of tasks. Editing your Ansible playbooks for these exercises can be done
+a variety of tasks. To verify access to your lab VMs:
+
+1. Use `ssh` and specify your admin username and controller IP (`ssh username@W.X.Y.Z`)
+   1. Hint: you can use `ansible-vault view` to display your credentials without
+      fully decrypting the file
+2. Enter your admin username when prompted
+3. Your CLI prompt should change to indicate the username and hostname of your controller
+
+Editing your Ansible playbooks for these exercises can be done
 in any of a variety of ways, and I recommend VS Code for this job due to its ease
 of use, availability, and support for YAML/Ansible documents. Consider the following
 when deciding how to manage your files:
