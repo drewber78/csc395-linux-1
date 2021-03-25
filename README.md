@@ -67,7 +67,7 @@ Linux system administration.
 
 Visit: [Moodle Homepage](http://moodle.stmartin.edu/)
 
-If you don’t have a SMU account, contact [help@stmartin.edu](mailto:help@stmartin.edu)
+If you do not have a SMU account, contact [help@stmartin.edu](mailto:help@stmartin.edu)
 or call [360-438-4338](360-438-4338)
 
 For tech support, visit [Integrated Technology Services](https://www.stmartin.edu/directory/integrated-technology-services)
