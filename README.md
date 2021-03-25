@@ -15,7 +15,7 @@
 - Office Hours: **By appointment**
   - I will do my best to accommodate any and all requests for additional assistance,
     but will require advance notice to do so due to my outside obligations. Please
-    don't hesitate to reach out to me if you would like to meet about something
+    do not hesitate to reach out to me if you would like to meet about something
     at any point during the course, and I will make time for you.
 
 **NOTE: I reserve the right to adjust the syllabus (but I'll really try not to)**
