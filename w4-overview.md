@@ -30,7 +30,7 @@ enough for most use cases.
 Private connections via VPN have been a staple of corporate network environments
 for quite some time, and have increased significantly for personal use in recent
 years. Although we won't be configuring one as a part of this exercise, tools like
-OpenVPN are known to be stable relatively simple to set up on Linux.
+OpenVPN are known to be stable and relatively simple to set up on Linux.
 
 ### Networking -  Recommended Reading
 
