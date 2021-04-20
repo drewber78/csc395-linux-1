@@ -134,12 +134,12 @@ final.
 
 ### Distribution
 
-| Course Component    | Weight |
-|---------------------|--------|
-| Participation       | 10%    |
-| Hands-On Solutions  | 50%    |
-| Research Paper      | 20%    |
-| Final Group Project | 10%    |
+| Course Component         | Weight |
+|--------------------------|--------|
+| Participation            | 10%    |
+| Hands-On Solutions       | 50%    |
+| Research Paper           | 20%    |
+| Final Group Presentation | 10%    |
 
 ## Helpful Links
 
