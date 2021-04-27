@@ -22,17 +22,27 @@ directly from their host itself or through a reverse proxy. By managing both the
 infrastructure as well as the applications that depend on it, we can offer unique
 flexibility in their implementation based on our users' needs.
 
-### Hosting - Recommended Reading
+## User Access
 
-1. Cloudflare - Reverse Proxy [Definition](https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/)
+Computing systems are kind of pointless if they aren't used for anything, and no
+one can use it for anything if they can't get in. In W4 we briefly mentioned VPN
+services, which allow encrypted connections into a network from the outside.
+
+### VPN
+
+We will be providing a VPN entry point to our lab in order to complete our
+simulation of a real system. VPNs are one of the most common ways for a system to
+provide access to internal resources for outside users. There are plenty of providers
+and systems that will offer VPN capabilities, but OpenVPN has years of open source
+history, community support, and industry use. Even many commercial VPNs for privacy
+are simply OpenVPN offered as a service!
 
 ## Lab Exercise
 
-For this lab exercise, you will be configuring an internal web page served through
-a reverse proxy. Use NGINX for your reverse proxy, and host it your controller box,
-since it is the only VM available for outside connections. It should point to an
-Apache webserver on `host3` that can host any basic site of your choice. A simple
-HTML "Hello, world!" is an appropriate (albeit very boring) demo for this, but feel
-free to use any website source code you've created as a part of another course/project
-or make something interesting from scratch for this exercise. Anyone should be able
-to access this site, given your public IP.
+For this lab exercise, you will be configuring an internal web page and OpenVPN server.
+Run the webserver on `host3` and host any basic site of your choice. A simple
+HTML "Hello, world!" is an appropriate demo for this, but feel free to use any website
+source code you've created as a part of another course/project or make something
+interesting from scratch for this exercise. Anyone should be able to access this
+site, given access to your VPN. You should generate a profile through which I can
+access your network in order to verify functionality.
